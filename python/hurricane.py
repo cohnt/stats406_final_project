@@ -42,7 +42,7 @@ class DataLine:
 		self.time = datetime.datetime(self.year, self.month, self.day, self.hour, self.minute)
 
 		self.event = row[2][1]
-		self.system_status = row[3]
+		self.system_status = row[3][1:]
 
 		self.lat = float(row[4][:-1])
 		if row[4][-1] == "S":
