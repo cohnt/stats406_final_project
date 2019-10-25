@@ -1,7 +1,7 @@
 import datetime
 
 class Hurricane:
-	def __init__(name, atcf_number, year):
+	def __init__(self, name, atcf_number, year):
 		self.name = name
 		self.atcf_number = atcf_number
 		self.year = year
@@ -15,7 +15,7 @@ class Hurricane:
 		self.min_pressure = None
 		self.made_landfall = False
 
-	def add_data_line(data_line):
+	def add_data_line(self, data_line):
 		self.data_lines.append(data_line)
 		self.track.append(data_line.pos)
 
@@ -31,7 +31,7 @@ class Hurricane:
 			self.made_landfall = True
 
 class DataLine:
-	def __init__(row):
+	def __init__(self, row):
 		self.year = int(row[0][0:4])
 		self.month = int(row[0][4:6])
 		self.day = int(row[0][6:8])
