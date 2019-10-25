@@ -30,6 +30,9 @@ class Hurricane:
 		if data_line.event == "L":
 			self.made_landfall = True
 
+	def __str__(self):
+		return "%s %d %d" % (self.name, self.atcf_number, self.year)
+
 class DataLine:
 	def __init__(self, row):
 		self.year = int(row[0][0:4])
