@@ -10,7 +10,7 @@ def read_file(fname):
 			if row[0][0:2] == "AL":
 				atcf_number = int(row[0][2:4])
 				year = int(row[0][4:8])
-				hurricane_name = row[1]
+				hurricane_name = row[1].strip()
 				hurricane_list.append(Hurricane(hurricane_name, atcf_number, year))
 			else:
 				hurricane_list[-1].add_data_line(DataLine(row))
