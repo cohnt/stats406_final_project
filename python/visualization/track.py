@@ -33,7 +33,7 @@ def plot_tracks_map(track_list):
 	# Heavily based on:
 	# https://matplotlib.org/basemap/users/mapcoords.html
 	# https://matplotlib.org/basemap/users/examples.html
-	m = Basemap(llcrnrlon=-90.,llcrnrlat=0.,urcrnrlon=20.,urcrnrlat=60.,
+	m = Basemap(llcrnrlon=-100.,llcrnrlat=0.,urcrnrlon=20.,urcrnrlat=60.,
 	            projection='lcc',lat_1=20.,lat_2=40.,lon_0=-60.,
 	            resolution ='l',area_thresh=1000.)
 	m.drawcoastlines()
