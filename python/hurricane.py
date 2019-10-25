@@ -19,9 +19,9 @@ class Hurricane:
 		self.data_lines.append(data_line)
 		self.track.append(data_line.pos)
 
-		if self.start_time == None or self.start_time > data_line.start_time:
+		if self.start_time == None or self.start_time > data_line.time:
 			self.start_time = data_line.time
-		if self.end_time == None or self.end_time < data_line.end_time:
+		if self.end_time == None or self.end_time < data_line.time:
 			self.end_time = data_line.time
 		if self.max_wind == None or self.max_wind < data_line.max_wind:
 			self.max_wind = data_line.max_wind
@@ -36,8 +36,8 @@ class DataLine:
 		self.month = int(row[0][4:6])
 		self.day = int(row[0][6:8])
 
-		self.hour = int(row[1][0:2])
-		self.minute = int(row[1][2:4])
+		self.hour = int(row[1][1:3])
+		self.minute = int(row[1][3:5])
 
 		self.time = datetime.datetime(self.year, self.month, self.day, self.hour, self.minute)
 
