@@ -51,7 +51,7 @@ class DataLine:
 		if row[4][-1] == "S":
 			self.lat = self.lat * -1
 		self.long = float(row[5][:-1])
-		if row[5][-1] == "E":
+		if row[5][-1] == "W":
 			self.long = self.long * -1
 		self.pos = [self.long, self.lat]
 
