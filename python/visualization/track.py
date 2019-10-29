@@ -9,26 +9,26 @@ def plot_track_raw(track):
 	ax.scatter(track[:,0], track[:,1])
 	plt.show()
 
-def plot_track_map(track):
+def plot_track_map(track, linewidth=2):
 	track = np.asarray(track)
 
-	plot_tracks_map([track])
+	plot_tracks_map([track], linewidth=linewidth)
 
-def plot_tracks_map(track_list):
+def plot_tracks_map(track_list, linewidth=2):
 	m = create_default_map()
 
 	for track in track_list:
 		track = np.asarray(track)
-		m.plot(track[:,0], track[:,1], latlon=True)
+		m.plot(track[:,0], track[:,1], latlon=True, linewidth=linewidth)
 
 	plt.show()
 
-def plot_track_status(hurricane):
+def plot_track_status(hurricane, linewidth=2):
 	m = create_default_map()
 
-	plot_tracks_status([hurricane])
+	plot_tracks_status([hurricane], linewidth=linewidth)
 
-def plot_tracks_status(hurricane_list):
+def plot_tracks_status(hurricane_list, linewidth=2):
 	m = create_default_map()
 
 	for hurricane in hurricane_list:
@@ -38,11 +38,11 @@ def plot_tracks_status(hurricane_list):
 			c = "blue"
 			if hurricane.data_lines[i].system_status == "HU":
 				c = "red"
-			m.plot(x, y, latlon=True, color=c)
+			m.plot(x, y, latlon=True, color=c, linewidth=linewidth)
 
 	plt.show()
 
-def plot_tracks_wind_speed(hurricane_list, color_max_wind=150.0):
+def plot_tracks_wind_speed(hurricane_list, color_max_wind=120.0, linewidth=2):
 	# color_max_wind is the highest wind speed which is displayed as its own color
 	m = create_default_map()
 
@@ -51,7 +51,7 @@ def plot_tracks_wind_speed(hurricane_list, color_max_wind=150.0):
 			x = [hurricane.track[i][0], hurricane.track[i+1][0]]
 			y = [hurricane.track[i][1], hurricane.track[i+1][1]]
 			c = cm.cool(hurricane.data_lines[i].max_wind / color_max_wind)
-			m.plot(x, y, latlon=True, color=c)
+			m.plot(x, y, latlon=True, color=c, linewidth=linewidth)
 
 	plt.show()
 
