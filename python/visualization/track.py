@@ -10,11 +10,8 @@ def plot_track_raw(track):
 
 def plot_track_map(track):
 	track = np.asarray(track)
-	
-	m = create_default_map()
-	m.plot(track[:,0], track[:,1], latlon=True)
 
-	plt.show()
+	plot_tracks_map([track])
 
 def plot_tracks_map(track_list):
 	m = create_default_map()
@@ -28,15 +25,7 @@ def plot_tracks_map(track_list):
 def plot_track_status(hurricane):
 	m = create_default_map()
 
-	for i in range(0, len(hurricane.track)-1):
-		x = [hurricane.track[i][0], hurricane.track[i+1][0]]
-		y = [hurricane.track[i][1], hurricane.track[i+1][1]]
-		c = "blue"
-		if hurricane.data_lines[i].system_status == "HU":
-			c = "red"
-		m.plot(x, y, latlon=True, color=c)
-
-	plt.show()
+	plot_tracks_status([hurricane])
 
 def plot_tracks_status(hurricane_list):
 	m = create_default_map()
