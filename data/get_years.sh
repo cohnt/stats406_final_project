@@ -62,7 +62,7 @@ let next_year=$year2+1
 if [ $year2 -eq 2018 ]
 then
 	sed_str="/^AL..${year1}/,\$p"
-	sed -n $sed_str $datafile > $data_out_dir/$year1_$year2.csv
+	sed -n $sed_str $datafile > $data_out_dir/$year1-$year2.csv
 else
 	sed_str="/^AL..${year1}/,/^AL..${next_year}/p"
 	sed -n $sed_str $datafile | head -n -1 > $data_out_dir/$year1-$year2.csv
