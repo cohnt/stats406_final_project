@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
+from matplotlib import cm
 
 def plot_track_raw(track):
 
@@ -37,6 +38,19 @@ def plot_tracks_status(hurricane_list):
 			c = "blue"
 			if hurricane.data_lines[i].system_status == "HU":
 				c = "red"
+			m.plot(x, y, latlon=True, color=c)
+
+	plt.show()
+
+def plot_tracks_wind_speed(hurricane_list, color_max_wind=150.0):
+	# color_max_wind is the highest wind speed which is displayed as its own color
+	m = create_default_map()
+
+	for hurricane in hurricane_list:
+		for i in range(0, len(hurricane.track)-1):
+			x = [hurricane.track[i][0], hurricane.track[i+1][0]]
+			y = [hurricane.track[i][1], hurricane.track[i+1][1]]
+			c = cm.cool(hurricane.data_lines[i].max_wind / color_max_wind)
 			m.plot(x, y, latlon=True, color=c)
 
 	plt.show()
