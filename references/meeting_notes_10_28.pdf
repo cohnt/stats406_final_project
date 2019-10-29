@@ -1,0 +1,25 @@
+QUESTIONS
+
+*Formatting*
+IEEE 2-column conference-style okay?
+Related Work section?
+
+*Content*
+Focus on prediction versus finding historical trends?
+Prediction ideas:
+	- Model and predict stats by year (number of hurricanes, landfalls, etc.)
+	- Predict individual hurricanes (manifold learning/closest historical hurricane, predict landfall)
+Historical trends:
+	- Number of hurricanes, landfalls, etc. per year. Model individual years and examine larger trend
+Ideas that apply to both:
+	- Compare various parametric distributions (including maybe mixture of Gaussians?) with a nonparametric distribution
+	- Outlier analysis (intensity, longevity, size, track)
+
+
+ANSWERS
+
+Prediction is much more interesting
+Compare different distributions (including parametric vs nonparametric), loss functions, etc.
+	Really focus on loss function
+How rare are outliers? Think of how skinny the tails are, especially Cauchy vs Normal
+My formatting stuff works.
