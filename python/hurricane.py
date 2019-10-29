@@ -6,7 +6,7 @@ class Hurricane:
 		self.atcf_number = atcf_number
 		self.year = year
 
-		self.data_lines = []
+		self.data = []
 		self.track = []
 
 		self.start_time = None
@@ -16,7 +16,7 @@ class Hurricane:
 		self.made_landfall = False
 
 	def add_data_line(self, data_line):
-		self.data_lines.append(data_line)
+		self.data.append(data_line)
 		self.track.append(data_line.pos)
 
 		if self.start_time == None or self.start_time > data_line.time:
