@@ -42,7 +42,7 @@ def plot_tracks_status(hurricane_list, m=None, linewidth=2):
 			x = [hurricane.track[i][0], hurricane.track[i+1][0]]
 			y = [hurricane.track[i][1], hurricane.track[i+1][1]]
 			c = "blue"
-			if hurricane.lines[i].system_status == "HU":
+			if hurricane.data[i].system_status == "HU":
 				c = "red"
 			m.plot(x, y, latlon=True, color=c, linewidth=linewidth)
 
@@ -58,7 +58,7 @@ def plot_tracks_wind_speed(hurricane_list, m=None, color_max_wind=120.0, linewid
 		for i in range(0, len(hurricane.track)-1):
 			x = [hurricane.track[i][0], hurricane.track[i+1][0]]
 			y = [hurricane.track[i][1], hurricane.track[i+1][1]]
-			c = cm.cool(hurricane.lines[i].max_wind / color_max_wind)
+			c = cm.cool(hurricane.data[i].max_wind / color_max_wind)
 			m.plot(x, y, latlon=True, color=c, linewidth=linewidth)
 
 	plt.show()
