@@ -3,15 +3,33 @@
 \subsection{Number of Storms}
 
 \par
-We will attempt to find the distributions which best fit the data on number of storms based on various loss functions.
+Much of this section will be devoted to explaining the mathematics and statistical methods for answering my questions. Implementation details will 
+
+\par
+I will attempt to find the distributions which best fit the data on number of storms based on various loss functions.
 Note that the number of landfalling storms is discrete.
 The distributions I plan to examine include
 \begin{itemize}
 	\item Poisson
 	\item Negative Binomial
 \end{itemize}
+I also plan to compare to a non-parametric distribution.
 For loss functions, I will examine common examples such as the 0-1 and quadratic loss functions, as well as defining some specific loss functions that make sense in the context of hurricanes.
 
-\subsection{Predicting if a Storm will Make Landfall}
+\subsection{Predicting a Storm's Outcome}
 
-\subsection{Ourlier Analysis}
+\par
+In order to predict whether a storm will make landfall, we have several methods.
+One method we will try is using the various similarity metrics presented by the paper I mention in related work to find the closest-match hurricane or the $n$-closest-matches (based on limited data from the start of the hurricane).
+Another method will be to learn probability distributions based on certain conditions of the start of the hurricane, such as location or origin and rate of intensification in size, wind speed, and other characteristics.
+
+\par
+In order to predict the conditions of a storm's landfall, I intend to approximate the various aspects (max wind speed, atmospheric pressure) with several continuous distributions, as well as a non-parametric distribution.
+I also plan to model multiple conditions simultaneously with multivariate distributions (such as a mixture of Gaussians) -- we know there should be a clear correlation between max wind speed and atmospheric pressure, and a multivariate distribution should better reflect this than independent single-variable distributions.
+
+\subsection{Outlier Analysis}
+
+\par
+In this section, I plan to examine the frequency of outliers in several aspects of the hurricane, including the maximum extend of certain wind speeds (informally, the ``size'' of the hurricane), and maximum wind speed.
+I will perform this analysis by fitting several continuous distributions, such as the Cauchy and Normal distributions, to the data, and examining which fit better.
+Based on this, I can consider how large the tail of the distribution is, and hence how likely rare storms are.
