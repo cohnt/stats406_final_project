@@ -14,6 +14,7 @@ class Hurricane:
 		self.max_wind = None
 		self.min_pressure = None
 		self.made_landfall = False
+		self.landfall_count = 0
 
 	def add_data_line(self, data_line):
 		self.data.append(data_line)
@@ -29,6 +30,7 @@ class Hurricane:
 			self.min_pressure = data_line.min_pressure
 		if data_line.event == "L":
 			self.made_landfall = True
+			self.landfall_count = self.landfall_count + 1
 
 	def __str__(self):
 		return "%s %d %d" % (self.name, self.atcf_number, self.year)
