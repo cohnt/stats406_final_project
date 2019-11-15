@@ -1,0 +1,8 @@
+For prediction: smoothing estimator based on historical storms
+Can give a probability of landfall, perhaps
+
+Focus less on proofs that statistics work, and more on how it answers your question and stuff
+
+Maybe compare to a generalized linear model (a more traditional approach)
+Use different loss functions to compare
+Don't worry about tails
