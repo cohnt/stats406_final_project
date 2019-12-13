@@ -12,7 +12,7 @@ def addTrackNoise(hurricane_list, noise_type="normal", cov=np.array([[2, 0], [0,
 				noise[i,:] = np.random.multivariate_normal([0, 0], cov)
 			elif noise_type == "uniform":
 				noise[i,:] = radius * 2 * (np.random.rand(2) - 0.5)
-		hurricane.track = hurricane.track + noise
+		hurricane.track = hurricane.track + np.cumsum(noise, axis=0)
 
 		# Check if landfall
 		bm = Basemap()
