@@ -17,7 +17,8 @@ def addTrackNoise(hurricane_list, noise_type="normal", cov=np.array([[2, 0], [0,
 		# Check if landfall
 		bm = Basemap()
 		for i in range(track_len):
-			if(bm.is_land(hurricane.track[i])):
+			[lat, lon] = hurricane.track[i]
+			if(bm.is_land(lon, lat)):
 				hurricane.made_landfall = True
 				break
 		else:
