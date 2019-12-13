@@ -1,5 +1,6 @@
 import numpy as np
 from mpl_toolkits.basemap import Basemap
+from copy import deepcopy
 from hurricane import Hurricane
 
 def addTrackNoise(hurricane_list, noise_type="normal", cov=np.array([[2, 0], [0, 2]]), radius=2):
@@ -21,3 +22,9 @@ def addTrackNoise(hurricane_list, noise_type="normal", cov=np.array([[2, 0], [0,
 				break
 		else:
 			hurricane.made_landfall = False
+
+def repeatDeepCopy(arr, num_repeats):
+	new_arr = []
+	for _ in range(num_repeats):
+		new_arr.extend(deepcopy(arr))
+	return new_arr
