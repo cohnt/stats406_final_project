@@ -15,7 +15,7 @@ repeated_list = hurricane_list
 # 	addTrackNoise(repeated_list)
 # 	plot_tracks_status(repeated_list)
 
-for i in range(5):
+for i in range(3):
 	repeated_list = repeatDeepCopy(repeated_list, 2)
 	addTrackNoise(repeated_list)
 
