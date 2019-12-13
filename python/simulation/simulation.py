@@ -3,7 +3,7 @@ from mpl_toolkits.basemap import Basemap
 from copy import deepcopy
 from hurricane import Hurricane
 
-def addTrackNoise(hurricane_list, noise_type="normal", cov=np.array([[0.25, 0], [0, 0.25]]), radius=2):
+def addTrackNoise(hurricane_list, noise_type="normal", cov=np.array([[0.1, 0], [0, 0.1]]), radius=0.25):
 	for hurricane in hurricane_list:
 		track_len = len(hurricane.track)
 		noise = np.zeros((track_len, 2))
