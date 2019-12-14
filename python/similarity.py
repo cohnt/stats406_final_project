@@ -18,6 +18,11 @@ def M2(A, B, delta, eps):
 	l2 = len(B)
 	return SLC(A, B, delta, eps) / np.min([l1, l2])
 
+def M3(A, B, delta, eps):
+	l1 = len(A)
+	l2 = len(B)
+	return SLC(A, B, delta, eps) / np.min([l1, l2]) / (1 + np.abs(l1-l2))
+
 def LCSS(A, B, delta, eps):
 	if len(A) == 0 or len(B) == 0:
 		return 0
