@@ -29,10 +29,10 @@ for i in range(0, n):
 		sim_mat_1[j][i] = sim_mat_1[i][j]
 
 		sim_mat_2[i][j] = M2(ts_list[i], ts_list[j], delta, eps)
-		sim_mat_2[j][i] = sim_mat_1[i][j]
+		sim_mat_2[j][i] = sim_mat_2[i][j]
 
 		sim_mat_3[i][j] = M3(ts_list[i], ts_list[j], delta, eps)
-		sim_mat_3[j][i] = sim_mat_1[i][j]
+		sim_mat_3[j][i] = sim_mat_3[i][j]
 
 		count = count + 1
 		if count % 1000 == 0:
