@@ -16,5 +16,10 @@ plot_tracks_status(repeated_list)
 ts1 = hurricane_to_time_series(repeated_list[0])
 ts2 = hurricane_to_time_series(repeated_list[1])
 
+print "\nM1"
 for eps in range(1, 6):
 	print M1(ts1, ts2, 21600, eps)
+
+print "\nM2"
+for eps in range(1, 6):
+	print M2(ts1, ts2, 21600, eps)
