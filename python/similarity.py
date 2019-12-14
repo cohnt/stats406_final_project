@@ -22,7 +22,7 @@ def LCSS(A, B, delta, eps):
 	if len(A) == 0 or len(B) == 0:
 		return 0
 	else:
-		arr = np.zeros(len(A)+1, len(B)+1)
+		arr = np.zeros((len(A)+1, len(B)+1))
 		for i in range(1, len(A)+1):
 			for j in range(1, len(B)+1):
 				# Check time distance and real distance
