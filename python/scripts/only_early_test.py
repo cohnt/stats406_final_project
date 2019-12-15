@@ -32,7 +32,7 @@ for i in range(0, n):
 		if count % 1000 == 0:
 			print count
 
-target_dim = 5
+target_dim = 15
 
 from sklearn.decomposition import KernelPCA
 kpca = KernelPCA(n_components=target_dim, kernel="precomputed", eigen_solver="auto", tol=1e-9, max_iter=3000, n_jobs=-1)
@@ -56,7 +56,7 @@ reg = KernelReg(landfalls_sorted, feature_coords_sorted, vartypes)
 # plt.plot(feature_coords_sorted[:,0], mean, color="red")
 # plt.show()
 
-n_check_ts = 8
+n_check_ts = 12
 
 # cv_hurricane_list = read_data.read_file("../data/by_year/1970-1999.csv")
 cv_hurricane_list = read_data.read_file("../data/by_year/2000-2009.csv")
@@ -86,7 +86,7 @@ print cv_mean
 cv_predicted = np.zeros(m)
 cv_high_prob = np.zeros(m) + 0.5
 num_high_prob = 0
-thresh = 0.1
+thresh = 0.05
 
 for i in range(m):
 	if cv_mean[i] >= 0.5:
