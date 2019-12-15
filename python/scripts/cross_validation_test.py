@@ -6,10 +6,11 @@ from visualization.storm_lifetime import *
 from similarity import *
 
 # hurricane_list = read_data.read_file("../data/hurdat2-1851-2018-051019.csv")
-hurricane_list = read_data.read_file("../data/by_year/2000-2018.csv")
+# hurricane_list = read_data.read_file("../data/by_year/2000-2018.csv")
 # hurricane_list = read_data.read_file("../data/by_year/2010-2018.csv")
 # hurricane_list = read_data.read_file("../data/by_year/1970-2018.csv")
 # hurricane_list = read_data.read_file("../data/by_year/2018.csv")
+hurricane_list = read_data.read_file("../data/by_year/1970-2018.csv")
 
 ts_list = [hurricane_to_time_series(h) for h in hurricane_list]
 
@@ -55,9 +56,10 @@ reg = KernelReg(landfalls_sorted, feature_coords_sorted, vartypes)
 # plt.plot(feature_coords_sorted[:,0], mean, color="red")
 # plt.show()
 
-cv_hurricane_list = read_data.read_file("../data/by_year/1970-1999.csv")
+# cv_hurricane_list = read_data.read_file("../data/by_year/1970-1999.csv")
 # cv_hurricane_list = read_data.read_file("../data/by_year/2000-2009.csv")
 # cv_hurricane_list = read_data.read_file("../data/by_year/2010-2018.csv")
+cv_hurricane_list = read_data.read_file("../data/by_year/1851-1969.csv")
 cv_ts_list = [hurricane_to_time_series(h) for h in cv_hurricane_list]
 m = len(cv_hurricane_list)
 
