@@ -84,17 +84,37 @@ print cv_feature_coords
 print cv_mean
 
 cv_predicted = np.zeros(m)
+cv_high_prob = np.zeros(m) + 0.5
+num_high_prob = 0
+thresh = 0.1
 
 for i in range(m):
 	if cv_mean[i] >= 0.5:
 		cv_predicted[i] = 1
 
+	if cv_mean[i] <= thresh:
+		num_high_prob = num_high_prob + 1
+		cv_high_prob[i] = 0
+	if cv_mean[i] >= (1-thresh):
+		num_high_prob = num_high_prob + 1
+		cv_high_prob[i] = 1
+
 cv_actual = np.array([int(h.made_landfall) for h in cv_hurricane_list])
 
 print cv_predicted
+print cv_high_prob
 print cv_actual
 
 num_correct = np.sum(cv_predicted == cv_actual)
-print num_correct
-print m
+print "num_correct", num_correct
+print "m", m
 print float(num_correct)/float(m)
+
+high_prob_correct = 0
+for i in range(m):
+	if cv_high_prob[i] != 0.5 and cv_high_prob[i] == cv_actual[i]:
+		high_prob_correct = high_prob_correct + 1
+
+print "high_prob_correct", high_prob_correct
+print "num_high_prob", num_high_prob
+print float(high_prob_correct)/float(num_high_prob)
