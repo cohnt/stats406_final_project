@@ -35,20 +35,32 @@ The extent of hurricane and tropical storm winds for a given hurricane gives us 
 In addition, because those measurements are separated by the quadrant of the storm, they provide knowledge of the shape of the storm.
 Utilizing this information to improve my predictions could be successful, but it is beyond the scope of this paper.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{images/2018_max_winds.png}
+	\caption{A map of the track of every Atlantic tropical storm in 2018. The color represents the maximum wind speed of the hurricane at that point in time -- magenta being the most intense.}
+	\label{fig:2018_storm_tracks}
+\end{figure}
+
 \par
 Finally, tracking whether or not a hurricane made landfall, and the conditions when it made landfall, allows us to esimate how dangerous the hurricane was.
 A strong hurricane which never makes landfall is much less hazardous than a weak hurricane that does.
 I will specifically use this information as the dependent variable when training my statistical models.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{images/2018_max_winds.png}
-	\caption{A map of the track of every Atlantic tropical storm in 2018. The color is scaled by the maximum wind speed.}
-	\label{fig:2018_storm_tracks}
-\end{figure}
 
 % \begin{figure}
 % 	\centering
 % 	\includegraphics[width=\linewidth]{images/hurricane_michael_max_wind.png}
 % 	\caption{A plot of the maximum wind speed of Hurricane Michael over its lifetime.}
 % \end{figure}
+
+\subsection{High-Level Analysis}
+
+\par
+In Figure~\ref{fig:2018_storm_tracks}, we plot the track of every Atlantic hurricane in 2018.
+This season presents examples of all of the most common paths for hurricanes to take.
+The majority of storms form off the west coast of Africa, initially move west across the Atlantic, then gradually turn north, and eventually back east.
+Depending on how this change occurs, and where exactly the storm formed, there are several common outcomes.
+Some storms turn to the north early and remain in the mid-Atlantic.
+Others turn later, moving up the Atlantic coast.
+The remaining hurricanes pass into the Gulf of Mexico before turning north towards the Gulf Coast and continental United States.
+There are also some storms which form within the Carribean or Gulf of Mexico -- they tend to move north-northeast towards the United States.
