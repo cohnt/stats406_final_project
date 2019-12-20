@@ -80,3 +80,8 @@ The data from every storm, from 1851 to present, is stored in a single comma-sep
 The size of the file can be inconvenient, so I've written shell scripts to separate out individual years or specified ranges of years.
 In addition, each hurricane has a header row with different column specifications then the best track data lines that follow.
 I created a custom \texttt{Hurricane} object to hold all information about a given storm, and then wrote code to read in all the hurricanes from a given data file.
+
+\par
+There are several other slight changes we make to the data.
+We reformat latitude and longitude as ordinary cartesian coordinates, and date and time information as a python \texttt{datetime} object.
+We also explicitly record several aspects of the storm that are only implicitly mentioned in the data, such as the maximum wind speed, minimum barometric pressure, and weather the storm made landfall.
