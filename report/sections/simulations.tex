@@ -48,3 +48,30 @@ In Table~\ref{tab:noise_landfalls}, we measure the number of direct landfalls fr
 	\caption{Comparing the number of direct landfalls}
 	\label{tab:noise_landfalls}
 \end{table}
+
+\par
+Although quantitatively, both simulation methods have similar results, Figure~\ref{fig:different_noise} provides the basis of a qualitative comparison of the two ways of adding noise.
+Specifically, it's clear that adding noise via random walk better accomplishes the goal of producing realistic hurricanes.
+The simulated tracks from the random walk method are smoother than those of the pointwise noise method, and they tend to diverge further from the seed hurricane track.
+
+
+\begin{figure*}
+	\centering
+	\begin{subfigure}[t]{0.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth, trim=350 50 300 50, clip]{images/individual_no_noise.png}
+		\caption{The Actual Hurricane}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth, trim=350 50 300 50, clip]{images/individual_pointwise.png}
+		\caption{Pointwise Noise}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth, trim=350 50 300 50, clip]{images/individual_random_walk.png}
+		\caption{Random Walk}
+	\end{subfigure}
+	\caption{TODO}
+	\label{fig:different_noise}
+\end{figure*}
