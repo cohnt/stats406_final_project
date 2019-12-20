@@ -6,8 +6,9 @@ First, I need to determine the underlying dimensionality of the vector space the
 To do this, I try embedding a subset of the full dataset into $\R^{i}$ for $i=1,\ldots,15$, and then regressing the Nardaraya-Watson estimator for each case.
 I then predict a different subset of the data to evaluate the accuracy of the model, for each number of dimensions.
 In Figure~\ref{fig:dimensions}, I plot the accuracy by the number of dimensions $i$.
-In Figure~\ref{fig:confident_dimensions}, I plot the accuracy (but this time only including points for which the estimator has at least $90\%$ confidence) by the number of dimensions.
-Generally, there's improvement in both accuracies up to $i=15$, but not after, so I conclude that this is the optimal choice for the number of dimensions.
+% In Figure~\ref{fig:confident_dimensions}, I plot the accuracy (but this time only including points for which the estimator has at least $90\%$ confidence) by the number of dimensions.
+% Generally, there's improvement in both accuracies up to $i=15$, but not after, so I conclude that this is the optimal choice for the number of dimensions.
+Generally, the accuracy is roughly improving up to $i=15$, but not after, so I conclude that this is the optimal choice for the number of dimensions.
 
 \par
 Now that I have fixed a dimension, I can test on a larger data set.
