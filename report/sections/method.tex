@@ -161,6 +161,27 @@ Then the Nardaraya-Watson estimator for kernel function $K$ and bandwidth $h$ is
 Code to compute the estimator is implemented by \cite{seabold2010statsmodels} in the python package \texttt{statsmodels}.
 I use a local linear regression, to mitigate bias issues at the edge of the support.
 
+\begin{figure*}
+	\centering
+	\begin{subfigure}[t]{0.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth, trim=350 50 300 50, clip]{images/individual_no_noise.png}
+		\caption{Original Hurricane Track}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth, trim=350 50 300 50, clip]{images/individual_pointwise.png}
+		\caption{Pointwise Noise}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth, trim=350 50 300 50, clip]{images/individual_random_walk.png}
+		\caption{Random Walk}
+	\end{subfigure}
+	\caption{A comparison of the impact of adding noise to copies of the track of a single hurricane with the pointwise noise method and the random walk method. The random walk clearly is more desirable, as it both appears smoother, and has greater variance.}
+	\label{fig:different_noise}
+\end{figure*}
+
 \subsection{Predicting Landfall}
 Now that I have described the full model, I'll walk through the process of actually making a prediction for a new hurricane.
 Let $H$ be a recently-formed hurricane or tropical storm (for our purposes, I assume at most $3$ days of track information).

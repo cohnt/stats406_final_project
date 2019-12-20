@@ -49,28 +49,21 @@ In Table~\ref{tab:noise_landfalls}, we measure the number of direct landfalls fr
 	\label{tab:noise_landfalls}
 \end{table}
 
+\begin{figure}
+	\centering
+	%\includegraphics[width=\linewidth]
+	\caption{A plot of accuracy of the estimator versus the number of dimensions the hurricanes are embedded into by KPCA.}
+	\label{fig:dimensions}
+\end{figure}
+
+\begin{figure}
+	\centering
+	%\includegraphics[width=\linewidth]
+	\caption{A plot of accuracy of the estimator for only points in which it has high confidence (at least $90\%$) versus the number of dimensions the hurricanes are embedded into by KPCA.}
+	\label{fig:confident_dimensions}
+\end{figure}
+
 \par
 Although quantitatively, both simulation methods have similar results, Figure~\ref{fig:different_noise} provides the basis of a qualitative comparison of the two ways of adding noise.
 Specifically, it's clear that adding noise via random walk better accomplishes the goal of producing realistic hurricanes.
 The simulated tracks from the random walk method are smoother than those of the pointwise noise method, and they tend to diverge further from the seed hurricane track.
-
-\begin{figure*}
-	\centering
-	\begin{subfigure}[t]{0.32\textwidth}
-		\centering
-		\includegraphics[width=\linewidth, trim=350 50 300 50, clip]{images/individual_no_noise.png}
-		\caption{Original Hurricane Track}
-	\end{subfigure}
-	\begin{subfigure}[t]{0.32\textwidth}
-		\centering
-		\includegraphics[width=\linewidth, trim=350 50 300 50, clip]{images/individual_pointwise.png}
-		\caption{Pointwise Noise}
-	\end{subfigure}
-	\begin{subfigure}[t]{0.32\textwidth}
-		\centering
-		\includegraphics[width=\linewidth, trim=350 50 300 50, clip]{images/individual_random_walk.png}
-		\caption{Random Walk}
-	\end{subfigure}
-	\caption{A comparison of the impact of adding noise to copies of the track of a single hurricane with the pointwise noise method and the random walk method. The random walk clearly is more desirable, as it both appears smoother, and has greater variance.}
-	\label{fig:different_noise}
-\end{figure*}
