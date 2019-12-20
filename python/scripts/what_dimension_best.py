@@ -74,7 +74,7 @@ for target_dim in range(1, 15+1):
 			if count % 1000 == 0:
 				print count
 
-	cv_feature_coords = kpca.transform(data_matrix)
+	cv_feature_coords = kpca.transform((data_matrix**2) * -0.5)
 	# print cv_feature_coords
 	[cv_mean, cv_mfx] = reg.fit(cv_feature_coords)
 	# print cv_mean
