@@ -42,3 +42,69 @@ Next, I present the local linear extension to Nadaraya-Watson kernel regression.
 Finally, I explain how to use the learned model to predict whether a hurricane will make landfall.
 
 \subsection{Time Series Similarity Metrics}
+
+\newcommand{\LCSS}{\operatorname{LCSS}}
+\newcommand{\SLC}{\operatorname{SLC}}
+
+\par
+In order to compare two hurricanes, we model their tracks as arbitrary-length multivariate spatiotemporal data sequences.
+Consider two hurricanes with track lengths $r$ and $s$. Then their data sequences are
+\[
+	A=[(t_{A,1},x_{A,1},y_{A,1}),\ldots,(t_{A,r},x_{A,r},y_{A,r})]
+\]
+and
+\[
+	B=[(t_{B,1},x_{B,1},y_{B,1}),\ldots,(t_{B,r},x_{B,r},y_{B,r})]
+\]
+(respectively).
+The $t_{*}$ are translated so that $t_{*,1}=0$, and the $x$ and $y$ coordinates correspond to longitude and latitude (respectively).
+
+\par
+I now present slightly modified versions of two similarity metrics used in the paper.
+There are parameters $\delta,\varepsilon>0$, where $\delta$ controls the temporal similarity range, and $\varepsilon$ controls the distance similarity range.
+Let $\mathscr{L}(A)$ give the length of $A$, and let $\mathscr{R}(A)$ return all but the last term of the time series $A$.
+Indexing by $-1$ is taken to mean accessing the last element in a list.
+
+\par
+Define
+\begin{equation}
+	M_{1}(A,B,\delta,\varepsilon)=\frac{\LCSS(A,B,\delta,\varepsilon)}{\min\set{\mathscr{L}(A),\mathscr{L}(B)}}
+	\label{eq:m1}
+\end{equation}
+and
+\begin{equation}
+	M_{2}(A,B,\delta,\varepsilon)=\frac{\SLC(A,B,\delta,\varepsilon)}{\min\set{\mathscr{L}(A),\mathscr{L}(B)}}
+	\label{eq:m2}
+\end{equation}
+$\LCSS(A,B,\delta,\varepsilon)$ is the approximate longest common subsequence, and $\SLC(A,B,\delta,\varepsilon)$ is the soft longest common subsequence.
+I explicitly write out their equations in Figure~\ref{fig:subsequences}, and implement them using bottom-up dynamic programming.
+
+\begin{figure*}
+	\centering
+	\begin{equation}
+		\LCSS(A,B,\delta,\varepsilon)=\left\{\begin{array}{ll}
+			0 & \mathscr{L}(A)=0\;\ptxt{or}\;\mathscr{L}(B)=0\\
+			1+\LCSS(\mathscr{R}(A),\mathscr{R}(B)) & \abs{t_{A,-1}-t_{B,-1}}<\delta\;\ptxt{and}\;\\
+			& \norm{(x_{A,-1},y_{A,-1})-(x_{B,-1},y_{B,-1})}_{2}<\varepsilon\\
+			\max\left\{\LCSS(\mathscr{R}(A),B,\delta,\varepsilon),\right.\\
+			\phantom{\max\left\{\right.}\!\!\left.\LCSS(A,\mathscr{R}(B),\delta,\varepsilon)\right\} & \ptxt{otherwise}
+		\end{array}\right.
+		\label{eq:lcss}
+	\end{equation}
+	\begin{equation}
+		\SLC(A,B,\delta,\varepsilon)=\left\{\begin{array}{ll}
+			0 & \mathscr{L}(A)=0\;\ptxt{or}\;\mathscr{L}(B)=0\\
+			C+\SLC(\mathscr{R}(A),\mathscr{R}(B)) & \abs{t_{A,-1}-t_{B,-1}}<\delta\;\ptxt{and}\;\\
+			& \norm{(x_{A,-1},y_{A,-1})-(x_{B,-1},y_{B,-1})}_{2}<\varepsilon\\
+			\max\left\{\SLC(\mathscr{R}(A),B,\delta,\varepsilon),\right.\\
+			\phantom{\max\left\{\right.}\!\!\left.\SLC(A,\mathscr{R}(B),\delta,\varepsilon)\right\} & \ptxt{otherwise}
+		\end{array}\right.
+		\label{eq:slc}
+	\end{equation}
+	\begin{equation}
+		C=\min\set{1,1-\frac{\varepsilon-\norm{(x_{A,-1},y_{A,-1})-(x_{B,-1},y_{B,-1})}_{2}}{\varepsilon}}
+		\label{eq:slc_c}
+	\end{equation}
+	\caption{Equations for $\LCSS$ and $\SLC$, used in computing the similarity between spatiotemporal data sequences. Note the usage of Eq~(\ref{eq:slc_c}) in the computation of Eq~(\ref{eq:slc}).}
+	\label{fig:subsequences}
+\end{figure*}
