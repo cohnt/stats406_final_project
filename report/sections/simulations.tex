@@ -23,3 +23,28 @@ Once again, our new hurricane track is
 \[
 	A'=[\vec{x}_{1}+\varepsilon_{1},\ldots,\vec{x}_{n}+\varepsilon_{n}]
 \]
+
+\par
+Investigating the means and covariances that would be mimic real-world data is beyond the scope of this paper, but would represent an interesting direction of future work.
+For now, I keep $\mu=0$, and let $\Sigma=0.1I$, for the purposes of comparing the two methods of adding noise.
+Given every hurricane from 1970 through 2018, I make duplicate copies and add noise from both methods.
+In Table~\ref{tab:noise_landfalls}, we measure the number of direct landfalls from each category, and compare the two noised totals to the original.
+(A direct landfall is where the epicenter of the storm directly passes over land -- this allows us to use basemap software to directly determine whether or not a hurricane track with added noise has made landfall.) We find that both methods of adding noise to hurricane data preserve the average number of direct landfalls to a high degree of accuracy.
+
+\begin{table}[t]
+	\centering
+	\begin{tabular}{|c|c|c|c|} \hline
+		& \begin{tabular}{c}
+			Number of\\
+			Landfalls $l$
+		\end{tabular} & \begin{tabular}{c}
+			Number of\\
+			Hurricanes $n$
+		\end{tabular} & $l/n$\\ \hline
+		Original Data & 81 & 798 & 0.102\\ \hline
+		Gaussian Noise & 80 & 798 & 0.100\\ \hline
+		Random Walk & 85 & 798 & 0.107\\ \hline
+	\end{tabular}
+	\caption{Comparing the number of direct landfalls}
+	\label{tab:noise_landfalls}
+\end{table}
