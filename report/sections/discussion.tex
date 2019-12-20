@@ -1,13 +1,37 @@
 %!TEX root = ../main.tex
 
-\par
-This section will largely need to be written after I have results.
+% \par
+% This section will largely need to be written after I have results.
+
+% \par
+% I imagine that one major takeaway from my project will be the fact that historical and generated data alone don't do a great job of modeling hurricanes.
+% I expect to see many outliers, and that the predictions may not be reliable to the degree needed for weather forecasting.
+% The incorporation of weather models, and the inclusion of larger scale weather patterns such as El Ni\~{n}o, could likely provide much more accurate results, and would be an interesting direction for future research.
+
+% \par
+% I will also mention the fact that larger scale changes in weather patterns, due to global warming, may present some skew in the results.
+% It would be helpful to take this into account while trying to fit probability distributions to hurricane data.
 
 \par
-I imagine that one major takeaway from my project will be the fact that historical and generated data alone don't do a great job of modeling hurricanes.
-I expect to see many outliers, and that the predictions may not be reliable to the degree needed for weather forecasting.
-The incorporation of weather models, and the inclusion of larger scale weather patterns such as El Ni\~{n}o, could likely provide much more accurate results, and would be an interesting direction for future research.
+In this paper, I've presented a new statistical method for predicting whether or not a hurricane will make landfall.
+I use time series similarity metrics to compare hurricanes, and use KPCA to find a representation for them in a Euclidean space.
+I then use Nardaraya-Watson kernel regression to approximate the relationship between these embedded coordinates and the probability a hurricane will make landfall.
+The analysis section provides evidence supporting the efficacy of my method.
 
 \par
-I will also mention the fact that larger scale changes in weather patterns, due to global warming, may present some skew in the results.
-It would be helpful to take this into account while trying to fit probability distributions to hurricane data.
+Of course, this is a relatively primitive model, and there's a wealth of available information about a hurricane that I don't utilize.
+Factors such as the size of a storm, the extent in various directions of its winds, the barometric pressure, and much more could help tune an extension of the model to be much more accurate.
+
+\par
+Another challenge my technique faces is speed.
+Computing the similarity between large numbers of hurricanes becomes expensive very quickly.
+The number of comparisons is $O(n^{2})$ for the number of hurricanes in the training dataset, and each comparison is $O(\mathscr{L}(A)\mathscr{L}(B))$, even when utilizing dynamic programming.
+With more computational resources, it would be possible to train and test on larger datasets, and make full use of the simulation capabilities to generate new data.
+
+\par
+Another ineresting area for future research would be high level modeling of hurricane behavior.
+This could be useful for further tweaking the simulation work, such as choosing a better mean and/or covariance.
+
+\par
+Obviously, only $70\%$ accuracy is not enough to make life-or-death predictions, and any purely statistical model will always be inferior to a more complex model that takes present weather patterns into account.
+However, this paper makes it clear that there are merits to using statistical techniques to model and understand hurricanes.
