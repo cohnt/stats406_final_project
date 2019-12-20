@@ -7,6 +7,8 @@ from simulation.simulation import *
 # hurricane_list = read_data.read_file("../data/by_year/2018.csv")
 hurricane_list = read_data.read_file("../data/by_year/1970-2018.csv")
 
+addTrackNoise(hurricane_list, noise_type="uniform", radius=0)
+
 num_landfall = 0
 for hurricane in hurricane_list:
 	if hurricane.made_landfall:
