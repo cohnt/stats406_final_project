@@ -11,6 +11,20 @@ The overall accuracy is roughly improving up to $i=15$, but not after.
 On the other hand, the accuracy for high confidence points appears to be optimal at $i=10$.
 This makes it difficult to judge the underlying dimension of the data, so I will experiment with both choices of dimension.
 
+\begin{figure*}
+	\centering
+	%\includegraphics[width=\textwidth]
+	\caption{A plot of all hurricanes successfully predicted by the dimension-$15$ model.}
+	\label{fig:got_it_right}
+\end{figure*}
+
+\begin{figure*}
+	\centering
+	%\includegraphics[width=\textwidth]
+	\caption{A plot of all hurricanes not successfully predicted by the dimension-$15$ model.}
+	\label{fig:got_it_wrong}
+\end{figure*}
+
 \par
 First, I will test with $i=10$.
 In order to fully evaluate how accurate my algorithm is, I train it on every huurricane from 2000 through 2018, and then test it on every hurricane from 1970 through 1999.
@@ -22,5 +36,5 @@ In order to fully evaluate how accurate my algorithm is, I train it on every huu
 Out of $479$ hurricanes in the test dataset, the learned model correctly predicts $335$; this is an accuracy of $0.70$.
 
 \par
-Additionally, in the case where $i=15$, I plot all of the successfully predicted storms in Figure -----, and all of the unsuccessfully predicted storms in Figure ------.
+Additionally, in the case where $i=15$, I plot all of the successfully predicted storms in Figure~\ref{fig:got_it_right}, and all of the not successfully predicted storms in Figure~\ref{fig:got_it_wrong}.
 There's a clear trend -- storms further to the north are significantly easier to predict in the early stages of their lifetime just using statistics, whereas storms further to the south are more challenging.
