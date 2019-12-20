@@ -147,7 +147,7 @@ Because $\SLC$ is a symmetric function, $\mathcal{S}$ is symmetric, so I only co
 I assume that there is some $k\in\N$ such that I can project our hurricanes into an $\R^{k}$ vector space, where the Euclidean distance between two hurricanes in $\R^{k}$ is approximately equal to their dissimilarity.
 Let $P$ be this projection operator.
 To compute the $P$, I use kernel principal component analysis (KPCA)~\cite{scholkopf1997kernel}, with $\mathcal{S}$ as a precomputed kernel.
-This is implemented by~\cite{scikit-learn} in the python package scikit-learn.
+This is implemented by~\cite{scikit-learn} in the python package \texttt{scikit-learn}.
 
 \subsection{Kernel Regression}
 In order to infer a relationship between the probability a storm makes landfall and its projection, I use Nardaraya-Watson kernel regression, presented jointly in papers by \cite{nadaraya1964estimating} and \cite{watson1964smooth}.
@@ -158,3 +158,4 @@ Then the Nardaraya-Watson estimator for kernel function $K$ and bandwidth $h$ is
 	\hat\mu(P(H))=\frac{\displaystyle\sum_{i=1}^{n}K\paren{\frac{P(H^{(i)})-P(H)}{h}}L^{(i)}}{\displaystyle\sum_{i=1}^{n}K\paren{\frac{P(H^{(i)})-P(H)}{h}}}
 	\label{eq:kernel_regression}
 \end{equation}
+Code to compute the estimator is implemented by \cite{seabold2010statsmodels} in the python package \texttt{statsmodels}.
