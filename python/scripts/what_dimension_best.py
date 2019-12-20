@@ -31,6 +31,26 @@ for i in range(0, n):
 		if count % 1000 == 0:
 			print count
 
+n_check_ts = 12
+
+# cv_hurricane_list = read_data.read_file("../data/by_year/1970-1999.csv")
+cv_hurricane_list = read_data.read_file("../data/by_year/2000-2009.csv")
+cv_ts_list = [hurricane_to_time_series(h)[0:np.min([n_check_ts, len(h.track)])] for h in cv_hurricane_list]
+m = len(cv_hurricane_list)
+
+data_matrix = np.zeros((m, n))
+
+print "There are %d hurricanes for cross validation. So I need to perform %d comparisons." % (m, m*n)
+count = 0
+
+for i in range(len(cv_hurricane_list)):
+	for j in range(n):
+		data_matrix[i][j] = M2(cv_ts_list[i], ts_list[j], delta, eps)
+
+		count = count + 1
+		if count % 1000 == 0:
+			print count
+
 for target_dim in range(1, 15+1):
 	print "\n\nChecking dimension %d" % target_dim
 	print "There are %d hurricanes. So I need to perform %d comparisons." % (n, n*(n+1)/2)
@@ -53,26 +73,6 @@ for target_dim in range(1, 15+1):
 	# plt.scatter(feature_coords_sorted[:,0], landfalls_sorted, color="green")
 	# plt.plot(feature_coords_sorted[:,0], mean, color="red")
 	# plt.show()
-
-	n_check_ts = 12
-
-	# cv_hurricane_list = read_data.read_file("../data/by_year/1970-1999.csv")
-	cv_hurricane_list = read_data.read_file("../data/by_year/2000-2009.csv")
-	cv_ts_list = [hurricane_to_time_series(h)[0:np.min([n_check_ts, len(h.track)])] for h in cv_hurricane_list]
-	m = len(cv_hurricane_list)
-
-	data_matrix = np.zeros((m, n))
-
-	print "There are %d hurricanes for cross validation. So I need to perform %d comparisons." % (m, m*n)
-	count = 0
-
-	for i in range(len(cv_hurricane_list)):
-		for j in range(n):
-			data_matrix[i][j] = M2(cv_ts_list[i], ts_list[j], delta, eps)
-
-			count = count + 1
-			if count % 1000 == 0:
-				print count
 
 	cv_feature_coords = kpca.transform((data_matrix**2) * -0.5)
 	# print cv_feature_coords
