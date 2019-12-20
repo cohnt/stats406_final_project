@@ -51,7 +51,7 @@ for i in range(len(cv_hurricane_list)):
 		if count % 1000 == 0:
 			print count
 
-for target_dim in range(1, 15+1):
+for target_dim in range(1, 20+1):
 	print "\n\nChecking dimension %d" % target_dim
 	print "There are %d hurricanes. So I need to perform %d comparisons." % (n, n*(n+1)/2)
 
@@ -120,9 +120,15 @@ for target_dim in range(1, 15+1):
 	errs_high_prob.append(float(high_prob_correct)/float(num_high_prob))
 
 plt.figure()
-plt.plot(np.arange(start=1, stop=15+1), np.asarray(errs))
+plt.plot(np.arange(start=1, stop=20+1), np.asarray(errs))
+plt.xlabel("Dimension")
+plt.ylabel("Accuracy")
+plt.title("Accuracy vs Dimension")
 plt.show()
 
 plt.figure()
-plt.plot(np.arange(start=1, stop=15+1), np.asarray(errs_high_prob))
+plt.plot(np.arange(start=1, stop=20+1), np.asarray(errs_high_prob))
+plt.xlabel("Dimension")
+plt.ylabel("Accuracy")
+plt.title("Accuracy vs Dimension")
 plt.show()
