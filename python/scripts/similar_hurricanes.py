@@ -12,7 +12,7 @@ ts_list = [hurricane_to_time_series(h) for h in hurricane_list]
 
 delta = 21600
 eps = 3
-n_largest = 6
+n_largest = 8
 
 while True:
 	my_pick = np.random.randint(low=0, high=n)
