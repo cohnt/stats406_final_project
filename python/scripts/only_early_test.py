@@ -32,7 +32,7 @@ for i in range(0, n):
 		if count % 1000 == 0:
 			print count
 
-target_dim = 15
+target_dim = 10
 
 from sklearn.decomposition import KernelPCA
 kpca = KernelPCA(n_components=target_dim, kernel="precomputed", eigen_solver="auto", tol=1e-9, max_iter=3000, n_jobs=-1)
