@@ -118,3 +118,9 @@ for i in range(m):
 print "high_prob_correct", high_prob_correct
 print "num_high_prob", num_high_prob
 print float(high_prob_correct)/float(num_high_prob)
+
+inds = (cv_predicted == cv_actual)
+plot_tracks_status(np.asarray(cv_hurricane_list)[inds])
+
+inds = (cv_predicted != cv_actual)
+plot_tracks_status(np.asarray(cv_hurricane_list)[inds])
