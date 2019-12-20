@@ -8,8 +8,8 @@ from similarity import *
 from sklearn.decomposition import KernelPCA
 from statsmodels.nonparametric.kernel_regression import KernelReg
 
-# hurricane_list = read_data.read_file("../data/by_year/2010-2018.csv")
-hurricane_list = read_data.read_file("../data/by_year/2000-2018.csv")
+hurricane_list = read_data.read_file("../data/by_year/2010-2018.csv")
+# hurricane_list = read_data.read_file("../data/by_year/2000-2018.csv")
 ts_list = [hurricane_to_time_series(h) for h in hurricane_list]
 
 n = len(hurricane_list)
@@ -21,19 +21,19 @@ eps = 3
 errs = []
 errs_high_prob = []
 
+count = 0
+for i in range(0, n):
+	for j in range(i, n):
+		sim_mat[i][j] = M2(ts_list[i], ts_list[j], delta, eps)
+		sim_mat[j][i] = sim_mat[i][j]
+
+		count = count + 1
+		if count % 1000 == 0:
+			print count
+
 for target_dim in range(1, 15+1):
 	print "\n\nChecking dimension %d" % target_dim
 	print "There are %d hurricanes. So I need to perform %d comparisons." % (n, n*(n+1)/2)
-	count = 0
-
-	for i in range(0, n):
-		for j in range(i, n):
-			sim_mat[i][j] = M2(ts_list[i], ts_list[j], delta, eps)
-			sim_mat[j][i] = sim_mat[i][j]
-
-			count = count + 1
-			if count % 1000 == 0:
-				print count
 
 	kpca = KernelPCA(n_components=target_dim, kernel="precomputed", eigen_solver="auto", tol=1e-9, max_iter=3000, n_jobs=-1)
 	feature_coords = kpca.fit_transform((sim_mat**2) * -0.5)
@@ -56,8 +56,8 @@ for target_dim in range(1, 15+1):
 
 	n_check_ts = 12
 
-	cv_hurricane_list = read_data.read_file("../data/by_year/1970-1999.csv")
-	# cv_hurricane_list = read_data.read_file("../data/by_year/2000-2009.csv")
+	# cv_hurricane_list = read_data.read_file("../data/by_year/1970-1999.csv")
+	cv_hurricane_list = read_data.read_file("../data/by_year/2000-2009.csv")
 	cv_ts_list = [hurricane_to_time_series(h)[0:np.min([n_check_ts, len(h.track)])] for h in cv_hurricane_list]
 	m = len(cv_hurricane_list)
 
