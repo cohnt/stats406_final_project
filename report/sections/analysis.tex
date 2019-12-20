@@ -1,5 +1,24 @@
 %!TEX root = ../main.tex
 
 \par
-This section will largely need to be written after I have results.
-I partially cover how I plan to perform my analysis in the method section, based on my expected results.
+I perform two major experiments to analyze the efficacy.
+First, I need to determine the underlying dimensionality of the vector space the hurricanes lie in.
+To do this, I try embedding a subset of the full dataset into $\R^{i}$ for $i=1,\ldots,15$, and then regressing the Nardaraya-Watson estimator for each case.
+I then predict a different subset of the data to evaluate the accuracy of the model, for each number of dimensions.
+In Figure ----, I plot the accuracy by the number of dimensions $i$.
+In Figure ----, I plot the accuracy (but this time only including points for which the estimator has at least $90\%$ confidence) by the number of dimensions.
+Since there's little improvement after $i=15$, I conclude that this is the optimal choice for the number of dimensions.
+
+\begin{figure}
+	\centering
+	%\includegraphics[width=\linewidth]
+	\caption{A plot of accuracy of the estimator versus the number of dimensions the hurricanes are embedded into by KPCA.}
+	\label{fig:dimensions}
+\end{figure}
+
+\begin{figure}
+	\centering
+	%\includegraphics[width=\linewidth]
+	\caption{A plot of accuracy of the estimator for only points in which it has high confidence (at least $90\%$) versus the number of dimensions the hurricanes are embedded into by KPCA.}
+	\label{fig:confident_dimensions}
+\end{figure}
