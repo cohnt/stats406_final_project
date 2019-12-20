@@ -137,14 +137,24 @@ I explicitly write out their equations in Figure~\ref{fig:subsequences}, and imp
 Now that I have a metric with which I can compare two hurricanes, compute a modified dissimilarity matrix $\mathcal{S}$ for hurricanes $H_{1},\ldots,H_{n}$
 \begin{equation*}
 	[\mathcal{S}]_{i,j}=-0.5(M_{2}(H_{i},H_{j},\delta,\varepsilon))^{2}\quad{}i,j\in\set{1,\ldots,n}
+	\label{eq:dissimilarity}
 \end{equation*}
 $M_{2}$, the $\SLC$ metric, is used because it is more effective than the $\LCSS$ metric according to \cite{ho2015manifold}.
 In Figure~\ref{fig:similar_hurricanes}, I plot several sets of similar hurricanes to demonstrate the function of the metric.
 Because $\SLC$ is a symmetric function, $\mathcal{S}$ is symmetric, so I only compute half of it and then reflect across the diagonal.
 
 \par
-I assume that there is some $k\in\N$ such that we can project our hurricanes into an $\R^{k}$ vector space, where the Euclidean distance between two hurricanes in $\R^{k}$ is approximately equal to their dissimilarity.
-To compute the projection into the $\R^{k}$ space, I use kernel principal component analysis (KPCA)~\cite{scholkopf1997kernel}, using the $\mathcal{S}$ as a precomputed kernel.
+I assume that there is some $k\in\N$ such that I can project our hurricanes into an $\R^{k}$ vector space, where the Euclidean distance between two hurricanes in $\R^{k}$ is approximately equal to their dissimilarity.
+Let $P$ be this projection operator.
+To compute the $P$, I use kernel principal component analysis (KPCA)~\cite{scholkopf1997kernel}, with $\mathcal{S}$ as a precomputed kernel.
 This is implemented by~\cite{scikit-learn} in the python package scikit-learn.
 
 \subsection{Kernel Regression}
+In order to infer a relationship between the probability a storm makes landfall and its projection, I use Nardaraya-Watson kernel regression, presented jointly in papers by \cite{nadaraya1964estimating} and \cite{watson1964smooth}.
+For $L$ the indicator random variable of whether or not a hurricane $H$ makes landfall, assume that $L=\mu(P(H))+e$ where $e$ is an error term and $E(e)=0$.
+Let $H^{(i)}$ for $i=1,\ldots,n$ be the Hurricanes used to train the model, with $L^{(i)}$ whether or not each of them made landfall.
+Then the Nardaraya-Watson estimator for kernel function $K$ and bandwidth $h$ is
+\begin{equation}
+	\hat\mu(P(H))=\frac{\displaystyle\sum_{i=1}^{n}K\paren{\frac{P(H^{(i)})-P(H)}{h}}L^{(i)}}{\displaystyle\sum_{i=1}^{n}K\paren{\frac{P(H^{(i)})-P(H)}{h}}}
+	\label{eq:kernel_regression}
+\end{equation}
