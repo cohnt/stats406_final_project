@@ -7,7 +7,7 @@ To do this, I try embedding a subset of the full dataset into $\R^{i}$ for $i=1,
 I then predict a different subset of the data to evaluate the accuracy of the model, for each number of dimensions.
 In Figure ----, I plot the accuracy by the number of dimensions $i$.
 In Figure ----, I plot the accuracy (but this time only including points for which the estimator has at least $90\%$ confidence) by the number of dimensions.
-Since there's little improvement after $i=15$, I conclude that this is the optimal choice for the number of dimensions.
+Generally, there's improvement in both accuracies up to $i=15$, but not after, so I conclude that this is the optimal choice for the number of dimensions.
 
 \begin{figure}
 	\centering
@@ -22,3 +22,7 @@ Since there's little improvement after $i=15$, I conclude that this is the optim
 	\caption{A plot of accuracy of the estimator for only points in which it has high confidence (at least $90\%$) versus the number of dimensions the hurricanes are embedded into by KPCA.}
 	\label{fig:confident_dimensions}
 \end{figure}
+
+\par
+Now that I have fixed a dimension, I can test on a larger data set.
+In order to fully evaluate how accurate my algorithm is, I train it on every huurricane from 2000 through 2018, and then test it on every hurricane from 1970 through 1999.
