@@ -9,12 +9,12 @@ hurricane_list = [read_data.read_file("../data/by_year/2018.csv")[0]]
 
 plot_tracks_status(hurricane_list)
 
-repeated_list = repeatDeepCopy(hurricane_list, 10, cov=0.4*np.eye(2))
-addTrackNoise(repeated_list)
+repeated_list = repeatDeepCopy(hurricane_list, 10)
+addTrackNoise(repeated_list, cov=0.4*np.eye(2))
 
 plot_tracks_status(repeated_list)
 
-repeated_list = repeatDeepCopy(hurricane_list, 10, cov=0.4*np.eye(2))
-pointwiseTrackNoise(repeated_list)
+repeated_list = repeatDeepCopy(hurricane_list, 10)
+pointwiseTrackNoise(repeated_list, cov=0.4*np.eye(2))
 
 plot_tracks_status(repeated_list)
