@@ -15,3 +15,11 @@ To separate out the datasets further, you can use the shell scripts in the `data
 
 * `./get_year.sh [year]` will create a new data file containing just information for that year.
 * `./get_years.sh [start] [end]` will create a new data file containing information from the start year *through* the end year.
+
+Some essential python packages:
+
+* `numpy`
+* `sklearn`
+* `matplotlib.pyplot`
+* `mpl_toolkits.basemap`
+* `statsmodels`
